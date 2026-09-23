@@ -1,0 +1,1261 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>鸥尚达木业 · 会展板材源头工厂</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231a1d18'/%3E%3Cpath d='M7 21 L14 9 L20 19 L25 11 L25 24 L7 24 Z' fill='%23b08354'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+    <style>
+        /* ===== Token ===== */
+        :root {
+            --bg: #f7f5f0;
+            --ink: #1e211c;
+            --ink-2: #555b52;
+            --ink-3: #8b9085;
+            --wood: #b08354;
+            --wood-deep: #7d5c38;
+            --line: #e5e1d7;
+            --dark: #171a15;
+            --dark-2: #20241e;
+            --serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
+            --sans: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .wrap {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ===== 导航 ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(247, 245, 240, .86);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: border-color .3s;
+        }
+
+        .nav.scrolled {
+            border-bottom-color: var(--line);
+        }
+
+        .nav-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: var(--dark);
+            display: grid;
+            place-items: center;
+            flex: none;
+        }
+
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .brand-en {
+            font-size: 10px;
+            color: var(--ink-3);
+            letter-spacing: .18em;
+            margin-top: 2px;
+        }
+
+        .links {
+            display: flex;
+            gap: 36px;
+            font-size: 14px;
+            color: var(--ink-2);
+        }
+
+        .links a {
+            position: relative;
+            padding: 6px 0;
+            transition: color .25s;
+        }
+
+        .links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--wood);
+            transition: width .3s;
+        }
+
+        .links a:hover {
+            color: var(--ink);
+        }
+
+        .links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--dark);
+            color: #f2efe8;
+            font-size: 13px;
+            padding: 10px 22px;
+            border-radius: 4px;
+            transition: background .25s;
+        }
+
+        .nav-cta:hover {
+            background: var(--wood-deep);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-btn svg {
+            stroke: var(--ink);
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 65%;
+            opacity: .92;
+        }
+
+        .hero-veil {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(18, 20, 16, .86) 8%, rgba(18, 20, 16, .52) 46%, rgba(18, 20, 16, .18) 78%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 120px 32px 90px;
+            width: 100%;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #d8c2a4;
+            font-size: 13px;
+            letter-spacing: .32em;
+        }
+
+        .hero-eyebrow::before {
+            content: "";
+            width: 44px;
+            height: 1px;
+            background: var(--wood);
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-weight: 700;
+            color: #f7f5f0;
+            font-size: clamp(38px, 5.6vw, 72px);
+            line-height: 1.28;
+            margin: 26px 0 22px;
+            letter-spacing: .02em;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--wood);
+        }
+
+        .hero p {
+            color: rgba(247, 245, 240, .82);
+            font-size: 16px;
+            max-width: 520px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-top: 38px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--wood);
+            color: #1c1a16;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 15px 34px;
+            border-radius: 4px;
+            transition: background .25s, transform .2s;
+        }
+
+        .btn-primary:hover {
+            background: #c99a6a;
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            color: #f2efe8;
+            font-size: 14px;
+            padding: 15px 8px;
+            border-bottom: 1px solid rgba(247, 245, 240, .45);
+            transition: border-color .25s, color .25s;
+        }
+
+        .btn-ghost:hover {
+            border-bottom-color: var(--wood);
+            color: var(--wood);
+        }
+
+        .hero-stats {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            border-top: 1px solid rgba(247, 245, 240, .14);
+            background: rgba(20, 22, 18, .42);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .stats-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 22px 32px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            color: rgba(247, 245, 240, .9);
+        }
+
+        .stat b {
+            display: block;
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 700;
+            color: #f2efe8;
+        }
+
+        .stat span {
+            font-size: 12px;
+            color: rgba(247, 245, 240, .62);
+            letter-spacing: .06em;
+        }
+
+        /* ===== Section 通用 ===== */
+        .section {
+            padding: 104px 0;
+        }
+
+        .sec-head {
+            margin-bottom: 52px;
+            max-width: 640px;
+        }
+
+        .sec-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--wood-deep);
+            letter-spacing: .22em;
+        }
+
+        .sec-tag::before {
+            content: "";
+            width: 26px;
+            height: 1px;
+            background: var(--wood);
+        }
+
+        .sec-head h2 {
+            font-family: var(--serif);
+            font-size: clamp(30px, 3.6vw, 44px);
+            font-weight: 700;
+            margin: 18px 0 14px;
+            line-height: 1.3;
+        }
+
+        .sec-head p {
+            color: var(--ink-2);
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        /* ===== 产品 ===== */
+        .prod-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: box-shadow .3s, transform .3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 16px 40px rgba(30, 33, 28, .1);
+            transform: translateY(-4px);
+        }
+
+        .card-media {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #ece9e1;
+        }
+
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .card:hover .card-media img {
+            transform: scale(1.05);
+        }
+
+        .card-zoom {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(23, 26, 21, .66);
+            color: #f2efe8;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .card:hover .card-zoom {
+            opacity: 1;
+        }
+
+        .card-body {
+            padding: 20px 22px 24px;
+        }
+
+        .card-body h3 {
+            font-family: var(--serif);
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .card-body p {
+            font-size: 13px;
+            color: var(--ink-2);
+            margin-top: 6px;
+            font-weight: 300;
+            line-height: 1.65;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 11px;
+            color: var(--wood-deep);
+            background: rgba(176, 131, 84, .1);
+            border-radius: 20px;
+            padding: 3px 12px;
+            margin-top: 12px;
+            letter-spacing: .08em;
+        }
+
+        /* ===== 关于 ===== */
+        .about {
+            background: #fff;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .about-copy h2 {
+            font-family: var(--serif);
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 700;
+            line-height: 1.35;
+            margin: 18px 0 20px;
+        }
+
+        .about-copy p {
+            color: var(--ink-2);
+            font-size: 15px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .about-points {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .point {
+            border-left: 2px solid var(--wood);
+            padding: 4px 0 4px 16px;
+        }
+
+        .point b {
+            font-size: 15px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .point span {
+            font-size: 12.5px;
+            color: var(--ink-3);
+        }
+
+        .about-media {
+            position: relative;
+        }
+
+        .about-media img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 24px 60px rgba(30, 33, 28, .16);
+        }
+
+        .poster-box {
+            margin-top: 26px;
+            cursor: pointer;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--dark);
+        }
+
+        .poster-box img {
+            width: 100%;
+            transition: transform .5s;
+        }
+
+        .poster-box:hover img {
+            transform: scale(1.02);
+        }
+
+        .poster-hint {
+            position: absolute;
+            left: 16px;
+            bottom: 14px;
+            color: #f2efe8;
+            font-size: 12px;
+            background: rgba(23, 26, 21, .66);
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: .06em;
+        }
+
+        /* ===== 服务 ===== */
+        .service {
+            background: var(--dark);
+            color: #f2efe8;
+        }
+
+        .service .sec-tag {
+            color: #d8c2a4;
+        }
+
+        .service .sec-head p {
+            color: rgba(247, 245, 240, .66);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .svc {
+            border: 1px solid rgba(247, 245, 240, .14);
+            border-radius: 8px;
+            padding: 34px 30px;
+            background: rgba(255, 255, 255, .03);
+            transition: background .3s, border-color .3s;
+        }
+
+        .svc:hover {
+            background: rgba(255, 255, 255, .06);
+            border-color: rgba(176, 131, 84, .5);
+        }
+
+        .svc-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 8px;
+            background: rgba(176, 131, 84, .18);
+            display: grid;
+            place-items: center;
+            margin-bottom: 20px;
+            color: #d8c2a4;
+        }
+
+        .svc h3 {
+            font-family: var(--serif);
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .svc p {
+            color: rgba(247, 245, 240, .6);
+            font-size: 13.5px;
+            font-weight: 300;
+        }
+
+        /* ===== 联系 ===== */
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-inner {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 60px 64px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .contact h2 {
+            font-family: var(--serif);
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1.35;
+            margin: 16px 0 14px;
+        }
+
+        .contact .lead {
+            color: var(--ink-2);
+            font-size: 14.5px;
+            font-weight: 300;
+        }
+
+        .contact-rows {
+            display: grid;
+            gap: 18px;
+        }
+
+        .c-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .c-row svg {
+            flex: none;
+            margin-top: 2px;
+            color: var(--wood-deep);
+        }
+
+        .c-row b {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .c-row span {
+            font-size: 13.5px;
+            color: var(--ink-2);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--dark);
+            color: rgba(247, 245, 240, .5);
+            padding: 40px 0;
+            font-size: 12.5px;
+        }
+
+        .footer-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer b {
+            color: rgba(247, 245, 240, .78);
+            font-weight: 500;
+            font-family: var(--serif);
+            letter-spacing: .1em;
+        }
+
+        /* ===== Lightbox ===== */
+        .lb {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(12, 14, 11, .94);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lb.open {
+            display: flex;
+        }
+
+        .lb-stage {
+            max-width: 92vw;
+            max-height: 82vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .lb-stage img {
+            max-width: 92vw;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+        }
+
+        .lb-cap {
+            color: rgba(247, 245, 240, .8);
+            font-size: 14px;
+            margin-top: 18px;
+            letter-spacing: .04em;
+        }
+
+        .lb-close,
+        .lb-prev,
+        .lb-next {
+            position: absolute;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .14);
+            color: #f2efe8;
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: background .25s;
+        }
+
+        .lb-close:hover,
+        .lb-prev:hover,
+        .lb-next:hover {
+            background: rgba(176, 131, 84, .55);
+        }
+
+        .lb-close {
+            top: 24px;
+            right: 24px;
+        }
+
+        .lb-prev {
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lb-next {
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lb-count {
+            position: absolute;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(247, 245, 240, .45);
+            font-size: 12px;
+            letter-spacing: .2em;
+        }
+
+        /* ===== 响应式 ===== */
+        @media(max-width:1000px) {
+            .prod-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:760px) {
+            .wrap {
+                padding: 0 20px;
+            }
+
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .links {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 20px 28px 28px;
+                gap: 20px;
+                border-bottom: 1px solid var(--line);
+                transform: translateY(-120%);
+                transition: transform .35s;
+                font-size: 15px;
+            }
+
+            .links.open {
+                transform: translateY(0);
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                min-height: 84vh;
+            }
+
+            .hero-inner {
+                padding: 120px 20px 205px;
+            }
+
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 18px 20px;
+                gap: 16px;
+            }
+
+            .stat b {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 72px 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 44px;
+            }
+
+            .about-points {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-inner {
+                grid-template-columns: 1fr;
+                padding: 40px 26px;
+            }
+
+            .lb-prev {
+                left: 10px;
+            }
+
+            .lb-next {
+                right: 10px;
+            }
+        }
+
+        @media(max-width:480px) {
+            .prod-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-media {
+                aspect-ratio: 16 / 10;
+            }
+
+            .lb-prev,
+            .lb-next {
+                top: auto;
+                bottom: 84px;
+                transform: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== 导航 ===== -->
+    <header class="nav" id="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top">
+                <span class="brand-mark"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M7 21 L14 9 L20 19 L25 11 L25 24 L7 24 Z" fill="#b08354"/></svg></span>
+                <span>
+                    <span class="brand-name">鸥尚达木业</span>
+                    <span class="brand-en" style="display:block">OUSHANGDA WOOD MATERIALS</span>
+                </span>
+            </a>
+            <nav class="links" id="links">
+                <a href="#products">产品中心</a>
+                <a href="#about">关于我们</a>
+                <a href="#service">服务优势</a>
+                <a href="#contact">联系我们</a>
+            </nav>
+           
+            <button class="menu-btn" id="menuBtn" aria-label="菜单">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h12"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- ===== Hero ===== -->
+        <section class="hero">
+            <img class="hero-bg" src="assets/hero.jpg" alt="鸥尚达木业仓储实景">
+            <div class="hero-veil"></div>
+            <div class="hero-inner">
+                <span class="hero-eyebrow">会展板材 · 源头直供</span>
+                <h1>让木材<br>成为空间的<em>底色</em></h1>
+                <p>展览板 · 弯曲板 · 阻燃板 · 海洋板 · 密度板，鸥尚达木业专注会展板材近二十年，为全国展览工厂与特装工程提供一站式板材供应。</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="#products">查看产品系列</a>
+                    <a class="btn-ghost" href="#about">了解鸥尚达</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stats-inner">
+                    <div class="stat"><b>9+</b><span>板材品类</span></div>
+                    <div class="stat"><b>20年</b><span>会展行业经验</span></div>
+                    <div class="stat"><b>全国</b><span>发货覆盖</span></div>
+                    <div class="stat"><b>源头</b><span>工厂直供</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 产品中心 ===== -->
+        <section class="section" id="products">
+            <div class="wrap">
+                <div class="sec-head">
+                    <span class="sec-tag">产品系列</span>
+                    <h2>每一张板材，都来自真实的生产现场</h2>
+                    <p>点击产品图片可查看该产品多张高清实拍图，左右箭头或滑动可翻页。产品支持规格定制、批量供货、全国物流配送。</p>
+                </div>
+                <div class="prod-grid" id="prodGrid">
+                    <article class="card" data-gallery="zhanlan" data-cap="展览板 · 三聚氰胺板 / 淋油板">
+                        <div class="card-media">
+                            <img src="assets/gallery/zhanlan/p1.jpg" alt="展览板仓库实拍">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>展览板</h3>
+                            <p>三聚氰胺板 / 淋油板，表面平整耐磨，色泽均匀，会展特装常用主材。</p>
+                            <span class="card-tag">3–18厘 · 多色可选</span>
+                        </div>
+                    </article>
+                    <article class="card" data-gallery="wanqu" data-cap="弯曲板 · 桐木 / 科技木">
+                        <div class="card-media">
+                            <img src="assets/gallery/wanqu/p1.jpg" alt="弯曲板柔韧卷曲实拍">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>弯曲板</h3>
+                            <p>桐木 / 科技木基材，可塑性强，弧形造型、曲面展台首选。</p>
+                            <span class="card-tag">5厘 / 7厘 · 现货</span>
+                        </div>
+                    </article>
+                    <article class="card" data-gallery="haiyang" data-cap="海洋板 · 多层实木结构">
+                        <div class="card-media">
+                            <img src="assets/gallery/haiyang/p1.png" alt="海洋板板材堆垛">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>海洋板</h3>
+                            <p>多层实木结构，防潮耐候，适用于展台、家具与工程定制。</p>
+                            <span class="card-tag">多规格 · 定制加工</span>
+                        </div>
+                    </article>
+                    <article class="card" data-gallery="midu" data-cap="密度板 · 纤维板">
+                        <div class="card-media">
+                            <img src="assets/gallery/midu/p1.png" alt="密度板单板实拍">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>密度板</h3>
+                            <p>结构均匀细密，加工性能优异，饰面造型、展柜制作的好基材。</p>
+                            <span class="card-tag">多种厚度 · 可贴面</span>
+                        </div>
+                    </article>
+                    <article class="card" data-gallery="zuran" data-cap="阻燃板 · 多层胶合">
+                        <div class="card-media">
+                            <img src="assets/gallery/zuran/p1.jpg" alt="阻燃胶合板层叠">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>阻燃板</h3>
+                            <p>阻燃胶合板系列，阻燃性能通过检测，满足展馆进场要求。</p>
+                            <span class="card-tag">B1级 · 检测报告齐全</span>
+                        </div>
+                    </article>
+                    <article class="card" data-gallery="duoceng" data-cap="多层板 · 胶合板">
+                        <div class="card-media">
+                            <img src="assets/gallery/duoceng/p1.jpg" alt="多层胶合板特写">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>多层板</h3>
+                            <p>多层胶合结构，强度稳定、不易变形，展会木作基础材料。</p>
+                            <span class="card-tag">4厘–7厘 · 常用规格</span>
+                        </div>
+                    </article>
+                    <article class="card" data-gallery="ditai" data-cap="地台板 · 车展 / 活动地台">
+                        <div class="card-media">
+                            <img src="assets/gallery/ditai/p1.jpg" alt="地台板仓储实拍">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>地台板</h3>
+                            <p>车展、活动地台专用板材，承重稳定，规格齐备可租赁。</p>
+                            <span class="card-tag">车展地台板 · 可租赁</span>
+                        </div>
+                    </article>
+                    <article class="card" data-gallery="banqiang" data-cap="板墙定制 · 精装板墙">
+                        <div class="card-media">
+                            <img src="assets/gallery/banqiang/p1.jpg" alt="精装板墙加工现场">
+                            <span class="card-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                        </div>
+                        <div class="card-body">
+                            <h3>板墙定制</h3>
+                            <p>活动板墙、精装板墙按需定制，隔断灵活，拆装便捷。</p>
+                            <span class="card-tag">按图定制 · 快速交付</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 关于我们 ===== -->
+        <section class="about" id="about">
+            <div class="wrap">
+                <div class="section about-grid">
+                    <div class="about-copy">
+                        <span class="sec-tag">关于鸥尚达</span>
+                        <h2>专注会展板材<br>呈现材料本来的样子</h2>
+                        <p>鸥尚达木业深耕会展板材领域，从展览板、弯曲板到板墙定制，为全国展览工厂、特装公司与工程项目提供一站式板材供应与定制加工服务。</p>
+                        <p>依托源头工厂与稳定供应链，坚持品质可靠、工艺精湛、服务贴心，让每一块板材都经得起现场检验。</p>
+                        <div class="about-points">
+                            <div class="point"><b>源头工厂</b><span>生产、仓储、物流一体化</span></div>
+                            <div class="point"><b>品类齐全</b><span>展览板到辅材一站采购</span></div>
+                            <div class="point"><b>按需定制</b><span>规格、饰面、板墙定制加工</span></div>
+                            <div class="point"><b>全国发货</b><span>快速响应，物流直达</span></div>
+                        </div>
+                    </div>
+                    <div class="about-media">
+                       
+                        <div class="poster-box" data-src="assets/1..jpg" data-cap="鸥尚达木业 · 企业产品总览">
+                            <img src="assets/1..jpg" alt="鸥尚达木业品牌海报">
+                            <span class="poster-hint">点击查看企业产品总览</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 服务优势 ===== -->
+        <section class="service" id="service">
+            <div class="wrap">
+                <div class="section" style="padding-bottom:0">
+                    <div class="sec-head">
+                        <span class="sec-tag">服务优势</span>
+                        <h2>从板材到现场，一步到位</h2>
+                        <p>以会展行业为原点，围绕板材供应与现场应用，提供完整的配套服务。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap" style="padding-bottom:104px">
+                <div class="service-grid">
+                    <div class="svc">
+                        <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-6h4v6"/></svg></div>
+                        <h3>一站式板材供应</h3>
+                        <p>展览板、弯曲板、阻燃板、海洋板、密度板等品类齐全，一次对接、整单发货。</p>
+                    </div>
+                    <div class="svc">
+                        <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+                        <h3>品质稳定可追溯</h3>
+                        <p>精选优质原材，多层板芯密实，阻燃产品提供检测报告，材料进场有据可依。</p>
+                    </div>
+                    <div class="svc">
+                        <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+                        <h3>快速交付保障</h3>
+                        <p>常备现货，装车即发，支持全国物流配送，展会工期紧也能从容应对。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 联系我们 ===== -->
+        <section class="contact" id="contact">
+            <div class="wrap">
+                <div class="contact-inner">
+                    <div>
+                        <span class="sec-tag">联系我们</span>
+                        <h2>板材采购，欢迎来电沟通</h2>
+                        <p class="lead">无论是标准板材批发，还是展会板墙、地台板定制，告诉我们需求，为您快速报价。</p>
+                    </div>
+                    <div class="contact-rows">
+                        <a class="c-row" href="tel:18117282757">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2.1z"/></svg>
+                            <span><b>联系电话</b><span>18117282757</span></span>
+                        </a>
+                        <div class="c-row">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18-3-3.5-3-14.5 0-18z"/></svg>
+                            <span><b>企业官网</b><span>www.oushangda.com</span></span>
+                        </div>
+                        <div class="c-row">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                            <span><b>服务范围</b><span>全国发货 · 上海 / 临沂货源</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span><b>鸥尚达木业</b> · OUSHANGDA WOOD MATERIALS</span>
+            <span>www.oushangda.com</span>
+        </div>
+    </footer>
+
+    <!-- ===== Lightbox ===== -->
+    <div class="lb" id="lb" role="dialog" aria-modal="true">
+        <button class="lb-close" id="lbClose" aria-label="关闭"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        <button class="lb-prev" id="lbPrev" aria-label="上一张"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="lb-stage"><img id="lbImg" src="" alt="大图预览"></div>
+        <button class="lb-next" id="lbNext" aria-label="下一张"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="lb-cap" id="lbCap"></div>
+        <div class="lb-count" id="lbCount"></div>
+    </div>
+
+    <script>
+        // ===== 导航吸顶 =====
+        const nav = document.getElementById('nav');
+        const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // ===== 移动端菜单 =====
+        const menuBtn = document.getElementById('menuBtn');
+        const links = document.getElementById('links');
+        menuBtn.addEventListener('click', () => links.classList.toggle('open'));
+        links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+        // ===== Lightbox =====
+        const lb = document.getElementById('lb');
+        const lbImg = document.getElementById('lbImg');
+        const lbCap = document.getElementById('lbCap');
+        const lbCount = document.getElementById('lbCount');
+        let items = [];
+        let cur = 0;
+
+        function openLb(i) {
+            cur = i;
+            lbImg.src = items[i].src;
+            lbImg.alt = items[i].cap || '';
+            lbCap.textContent = items[i].cap || '';
+            lbCount.textContent = items.length > 1 ? (i + 1) + ' / ' + items.length : '';
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLb() {
+            lb.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function step(d) {
+            if (items.length < 2) return;
+            cur = (cur + d + items.length) % items.length;
+            openLb(cur);
+        }
+
+        // 各产品图集：点击卡片，在该产品的多张高清图之间左右切换
+        const GALLERY = {
+            zhanlan: [{ src:"assets/gallery/zhanlan/p1.jpg", cap:"展览板大板平铺" }, { src:"assets/gallery/zhanlan/p2.jpg", cap:"展览板贴面细节" }, { src:"assets/gallery/zhanlan/p3.jpg", cap:"展览板整齐码放" }, { src:"assets/gallery/zhanlan/p4.jpg", cap:"展览板仓库实拍" }, { src:"assets/gallery/zhanlan/p5.jpg", cap:"展览板多色可选" }, { src:"assets/gallery/zhanlan/p6.jpg", cap:"展览板现货库存" }],
+            wanqu: [{ src:"assets/gallery/wanqu/p1.jpg", cap:"弯曲板柔韧可弯" }, { src:"assets/gallery/wanqu/p2.jpg", cap:"弯曲板板面" }, { src:"assets/gallery/wanqu/p3.jpg", cap:"弯曲板弧度造型" }, { src:"assets/gallery/wanqu/p4.jpg", cap:"弯曲板桐木基材" }, { src:"assets/gallery/wanqu/p5.jpg", cap:"弯曲板现货厚度" }],
+            haiyang: [{ src:"assets/gallery/haiyang/p1.png", cap:"海洋板多层实木" }, { src:"assets/gallery/haiyang/p2.jpg", cap:"海洋板整垛实拍" }, { src:"assets/gallery/haiyang/p3.jpg", cap:"海洋板防潮耐候" }, { src:"assets/gallery/haiyang/p4.jpg", cap:"海洋板仓库堆存" }, { src:"assets/gallery/haiyang/p5.jpg", cap:"海洋板多规格" }],
+            midu: [{ src:"assets/gallery/midu/p1.png", cap:"密度板平整板面" }, { src:"assets/gallery/midu/p2.png", cap:"密度板纤维细密" }, { src:"assets/gallery/midu/p3.png", cap:"密度板加工性能" }, { src:"assets/gallery/midu/p4.jpg", cap:"密度板整垛实拍" }],
+            ditai: [{ src:"assets/gallery/ditai/p1.jpg", cap:"地台板车展专用" }, { src:"assets/gallery/ditai/p2.jpg", cap:"地台板承重稳定" }, { src:"assets/gallery/ditai/p3.jpg", cap:"地台板规格齐备" }, { src:"assets/gallery/ditai/p4.jpg", cap:"地台板可租赁" }],
+            banqiang: [{ src:"assets/gallery/banqiang/p1.jpg", cap:"板墙整垛堆存" }, { src:"assets/gallery/banqiang/p2.jpg", cap:"板墙按图定制" }, { src:"assets/gallery/banqiang/p3.jpg", cap:"板墙隔断效果" }, { src:"assets/gallery/banqiang/p4.jpg", cap:"板墙精装交付" }],
+            zuran: [{ src:"assets/gallery/zuran/p1.jpg", cap:"阻燃板 B1级" }, { src:"assets/gallery/zuran/p2.jpg", cap:"阻燃板板材实拍" }, { src:"assets/gallery/zuran/p3.jpg", cap:"阻燃板现货库存" }],
+            duoceng: [{ src:"assets/gallery/duoceng/p1.jpg", cap:"多层板胶合结构" }, { src:"assets/gallery/duoceng/p2.jpg", cap:"多层板截面层叠" }, { src:"assets/gallery/duoceng/p3.jpg", cap:"多层板强度稳定" }]
+        };
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                const g = GALLERY[card.dataset.gallery] || [];
+                items = g.map(x => ({ src: x.src, cap: x.cap }));
+                openLb(0);
+            });
+        });
+
+        // 关于区图片（product-07 大图）
+        document.querySelectorAll('#about .about-media > img[data-src]').forEach(el => {
+            el.addEventListener('click', () => {
+                items = Array.from(document.querySelectorAll('#about .about-media > img[data-src]')).map(i => ({
+                    src: i.dataset.src,
+                    cap: i.dataset.cap || i.alt
+                }));
+                openLb(Array.from(document.querySelectorAll('#about .about-media > img[data-src]')).indexOf(el));
+            });
+        });
+
+        // 品牌海报（点击整块打开大图）
+        document.querySelectorAll('.poster-box').forEach(el => {
+            el.addEventListener('click', () => {
+                items = Array.from(document.querySelectorAll('.poster-box')).map(p => ({
+                    src: p.dataset.src,
+                    cap: p.dataset.cap
+                }));
+                openLb(Array.from(document.querySelectorAll('.poster-box')).indexOf(el));
+            });
+        });
+
+        document.getElementById('lbClose').addEventListener('click', closeLb);
+        document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+        document.getElementById('lbNext').addEventListener('click', () => step(1));
+        lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+        document.addEventListener('keydown', e => {
+            if (!lb.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLb();
+            if (e.key === 'ArrowLeft') step(-1);
+            if (e.key === 'ArrowRight') step(1);
+        });
+
+        // 触屏滑动切换
+        let tx = 0;
+        lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+        lb.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - tx;
+            if (Math.abs(dx) > 48) step(dx < 0 ? 1 : -1);
+        }, { passive: true });
+    </script>
+</body>
+
+</html>
